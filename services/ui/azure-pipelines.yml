@@ -11,7 +11,7 @@ variables:
   buildOutputFolder: 'services/ui/dist'
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'e241e9e5-b84c-46de-aa1e-ceea0bc57c75'
+  azureSubscription: 'SiteConnection'
   # Web app name
   webAppName: 'renzobaasdam'
   # Environment name
