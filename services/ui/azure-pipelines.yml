@@ -15,7 +15,7 @@ variables:
   # Web app name
   webAppName: 'renzobaasdam'
   # Environment name
-  environmentName: 'renzobaasdam'
+  #environmentName: 'renzobaasdam'
   vmImageName: 'ubuntu-latest'
 
 stages:
