@@ -10,6 +10,11 @@ variables:
   projectFolder: 'services/ui'
   buildOutputFolder: 'services/ui/dist'
 
+  azureSubscription: 'SiteConnection'
+  webAppName: 'renzobaasdam'
+  environmentName: 'site'
+  vmImageName: 'ubuntu-latest'
+
 stages:
 - stage: Build
   displayName: Build stage
@@ -17,7 +22,7 @@ stages:
   - job: Build
     displayName: Build
     pool: 
-      vmImage: 'ubuntu-latest'
+      vmImage: $(vmImageName)
 
     steps:
     - task: NodeTool@0
@@ -42,3 +47,28 @@ stages:
       
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
+
+
+- stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest') )
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: $(environmentName)
+    pool:
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            displayName: 'Azure Web App Deploy: site'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: webAppLinux
+              appName: $(webAppName)
+              runtimeStack: 'NODE|18-lts'
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+              startUpCommand: 'pm2 serve /home/site/wwwroot --spa --no-daemon'
