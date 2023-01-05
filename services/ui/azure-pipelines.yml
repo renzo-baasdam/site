@@ -13,26 +13,34 @@ variables:
   projectFolder: 'services/ui'
   buildOutputFolder: 'services/ui/dist'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '19.x'
-  displayName: 'Install Node.js'
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool: ubuntu-latest
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-  workingDirectory: $(projectFolder)
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '19.x'
+    displayName: 'Install Node.js'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: $(buildOutputFolder)
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
-  
-- upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-  artifact: drop
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'
+    workingDirectory: $(projectFolder)
+
+  - task: ArchiveFiles@2
+    displayName: 'Archive files'
+    inputs:
+      rootFolderOrFile: $(buildOutputFolder)
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      replaceExistingArchive: true
+    
+  - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    artifact: drop
