@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Hello about page!</h1>
+    <h1>Hello about page! Does the pipeline trigger?</h1>
   </div>
 </template>
 
