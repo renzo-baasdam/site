@@ -10,11 +10,8 @@ variables:
   projectFolder: 'services/ui'
   buildOutputFolder: 'services/ui/dist'
 
-  # Azure Resource Manager connection created during pipeline creation
   azureSubscription: 'SiteConnection'
-  # Web app name
   webAppName: 'renzobaasdam'
-  # Environment name
   environmentName: 'site'
   vmImageName: 'ubuntu-latest'
 
@@ -55,7 +52,7 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
-  condition: succeeded()
+  condition: and( succeeded(), eq(variables['Build.Reason'], 'PullRequest') )
   jobs:
   - deployment: Deploy
     displayName: Deploy
