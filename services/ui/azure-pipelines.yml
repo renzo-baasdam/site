@@ -6,9 +6,6 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-
 variables:
   projectFolder: 'services/ui'
   buildOutputFolder: 'services/ui/dist'
@@ -21,26 +18,26 @@ stages:
     displayName: Build
     pool: ubuntu-latest
 
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '19.x'
-    displayName: 'Install Node.js'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '19.x'
+      displayName: 'Install Node.js'
 
-  - script: |
-      npm install
-      npm run build
-    displayName: 'npm install and build'
-    workingDirectory: $(projectFolder)
+    - script: |
+        npm install
+        npm run build
+      displayName: 'npm install and build'
+      workingDirectory: $(projectFolder)
 
-  - task: ArchiveFiles@2
-    displayName: 'Archive files'
-    inputs:
-      rootFolderOrFile: $(buildOutputFolder)
-      includeRootFolder: false
-      archiveType: zip
-      archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-      replaceExistingArchive: true
-    
-  - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    artifact: drop
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: $(buildOutputFolder)
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+      
+    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      artifact: drop
