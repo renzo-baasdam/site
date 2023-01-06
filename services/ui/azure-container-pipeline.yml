@@ -7,9 +7,10 @@ pool:
 
 steps:
   - task: AzureContainerAppsRC@V0
+    displayName: Build and deploy Container App
     inputs:
+      connectedServiceNameARM: $(azureSubscription)
       appSourcePath: '$(Build.SourcesDirectory)'
-      azureSubscription: $(azureSubscription)
       acrName: 'renzositecontainerregistry'
       containerAppName: 'site-container'
       resourceGroup: 'basic-site'
