@@ -6,7 +6,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: AzureContainerApps@V0
+  - task: AzureContainerApps@0
     displayName: Build and deploy Container App
     inputs:
       connectedServiceNameARM: $(azureSubscription)
