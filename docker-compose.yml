@@ -1,0 +1,9 @@
+version: "3.4"
+name: "site"
+services:
+  ui:
+    container_name: ui
+    image: vue3-ui-image
+    build: services/ui
+    ports:
+      - "8080:8080"
