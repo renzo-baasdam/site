@@ -1,0 +1,15 @@
+trigger:
+  - main
+
+pool:
+  azureSubscription: 'SiteConnection'
+  vmImage: ubuntu-latest
+
+steps:
+  - task: AzureContainerAppsRC@0
+    inputs:
+      appSourcePath: '$(Build.SourcesDirectory)'
+      azureSubscription: $(azureSubscription)
+      acrName: 'renzositecontainerregistry'
+      containerAppName: 'site-container'
+      resourceGroup: 'basic-site'
