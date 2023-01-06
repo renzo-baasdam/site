@@ -6,7 +6,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: AzureContainerAppsRC@0
+  - task: AzureContainerAppsRC@V0
     inputs:
       appSourcePath: '$(Build.SourcesDirectory)'
       azureSubscription: $(azureSubscription)
