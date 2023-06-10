@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue3-site-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue3-site
+  template:
+    metadata:
+      labels:
+        app: vue3-site
+    spec:
+      containers:
+        - name: vue3-site-container
+          image: static-site:latest
+          ports:
+            - containerPort: 80
