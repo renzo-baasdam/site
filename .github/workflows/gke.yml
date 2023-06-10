@@ -96,9 +96,7 @@ jobs:
       working-directory: services/ui/deploy
       run: |-
         # replacing the image name in the k8s template
-        ls -lrt
-        ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
-        cat kustomization.yaml
+        ./kustomize edit set image IMAGE:latest=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
         ./kustomize build . | kubectl apply -f -
         # kubectl rollout status deployment/$DEPLOYMENT_NAME
         # kubectl get services -o wide
