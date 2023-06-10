@@ -7,6 +7,6 @@ spec:
     app: vue3-site
   ports:
     - protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 8080
   type: LoadBalancer

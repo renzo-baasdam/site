@@ -16,4 +16,4 @@ spec:
         - name: vue3-site-container
           image: static-site:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
