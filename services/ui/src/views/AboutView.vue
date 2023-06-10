@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>CI/CD works!</h1>
+    <h1>Hosted on both GKE and Azure App Service</h1>
   </div>
 </template>
 
