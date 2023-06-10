@@ -23,7 +23,7 @@ env:
   GAR_LOCATION: europe-west4
   GKE_CLUSTER: k8s-cluster
   GKE_ZONE: europe-west4
-  DEPLOYMENT_NAME: i-dont-know-but-doesnt-seem-to-get-used # TODO: update to deployment name
+  DEPLOYMENT_NAME: vue3-site-deployment
   REPOSITORY: site # Artifact Registry docker repository
   IMAGE: static-site
 
@@ -98,5 +98,5 @@ jobs:
         ls -lrt
         ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$\
+        kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
