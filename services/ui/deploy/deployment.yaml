@@ -17,3 +17,10 @@ spec:
           image: static-site:latest
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "5m"
+            limits:
+              memory: "200Mi"
+              cpu: "30m"
