@@ -17,6 +17,11 @@ spec:
           image: static-site:latest
           ports:
             - containerPort: 8080
+          livenessProbe:
+            tcp:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
           resources:
             requests:
               memory: "100Mi"
