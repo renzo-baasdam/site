@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 8080
           livenessProbe:
-            tcp:
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 10
