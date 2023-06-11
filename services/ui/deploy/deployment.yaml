@@ -17,11 +17,20 @@ spec:
           image: static-site:latest
           ports:
             - containerPort: 8080
+
           livenessProbe:
             tcpSocket:
               port: 8080
             initialDelaySeconds: 10
+            periodSeconds: 100
+
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initalDelaySeconds: 20
+            failureThreshold: 30
             periodSeconds: 10
+
           resources:
             requests:
               memory: "100Mi"
