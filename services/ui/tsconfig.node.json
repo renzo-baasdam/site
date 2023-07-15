@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "@tsconfig/node20/tsconfig.json",
+    "@vue/tsconfig/tsconfig.json"
+  ],
+  "include": [
+    "vite.config.*", 
+    "vitest.config.*", 
+    "playwright.config.*"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "types": ["node"]
+  }
+}
