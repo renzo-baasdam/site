@@ -2,7 +2,7 @@ name: Build and Deploy Svelte ui to GKE
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "ui-svelte-pipeline-k8s-deploy" ]
 
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
