@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svelte-site-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svelte-site
+  template:
+    metadata:
+      labels:
+        app: svelte-site
+    spec:
+      containers:
+        - name: svelte-site-container
+          image: svelte-site:latest
+          ports:
+            - containerPort: 8080
+
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 100
+
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 20
+            failureThreshold: 30
+            periodSeconds: 10
+
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "20m"
+            limits:
+              memory: "200Mi"
+              cpu: "50m"
