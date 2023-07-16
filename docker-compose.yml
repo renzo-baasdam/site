@@ -7,3 +7,9 @@ services:
     build: services/ui
     ports:
       - "8080:8080"
+  ui-svelte:
+    container_name: ui-svelte
+    image: svelte-ui-image
+    build: services/ui-svelte
+    ports:
+      - "8081:8080"
