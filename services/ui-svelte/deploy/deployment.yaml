@@ -16,17 +16,17 @@ spec:
         - name: svelte-site-container
           image: svelte-site:latest
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
 
           livenessProbe:
             tcpSocket:
-              port: 8081
+              port: 8080
             initialDelaySeconds: 10
             periodSeconds: 100
 
           startupProbe:
             tcpSocket:
-              port: 8081
+              port: 8080
             initialDelaySeconds: 20
             failureThreshold: 30
             periodSeconds: 10
