@@ -12,7 +12,7 @@ env:
   GAR_LOCATION: europe-west4
   GAR_REPOSITORY: site
   GKE_CLUSTER: k8s-cluster
-  GKE_ZONE: europe-west4
+  GKE_ZONE: europe-west4-a
   GKE_DEPLOYMENT_NAME: vue3-site-deployment
   IMAGE: static-site
   BASE_PATH: services/ui
