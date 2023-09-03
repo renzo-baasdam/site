@@ -1,6 +1,7 @@
 name: Build and Deploy Svelte ui to GKE
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main", "ui-svelte-pipeline-k8s-deploy" ]
 
@@ -11,7 +12,7 @@ env:
   GAR_LOCATION: europe-west4
   GAR_REPOSITORY: site
   GKE_CLUSTER: k8s-cluster
-  GKE_ZONE: europe-west4
+  GKE_ZONE: europe-west4-a
   GKE_DEPLOYMENT_NAME: svelte-site-deployment
   IMAGE: svelte-site
   BASE_PATH: services/ui-svelte
