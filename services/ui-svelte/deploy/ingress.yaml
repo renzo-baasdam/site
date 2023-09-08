@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   name: ui-svelte-ingress
   annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: ui-svelte-ingress
+  ingressClassName: nginx
   rules:
   - http:
       paths:
