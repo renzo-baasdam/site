@@ -15,7 +15,7 @@ env:
   GKE_ZONE: europe-west4-a
   GKE_DEPLOYMENT_NAME: vue3-site-deployment
   IMAGE: static-site
-  BASE_PATH: services/ui
+  BASE_PATH: services/ui-vue
 
 jobs:
   setup-build-publish-deploy:
