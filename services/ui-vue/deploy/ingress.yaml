@@ -3,16 +3,16 @@ kind: Ingress
 metadata:
   name: ui-vue-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /vue
 spec:
   ingressClassName: nginx
   rules:
     - http:
-      paths:
-        - path: /vue
-          pathType: Prefix
-          backend:
-            service:
-              name: vue3-site-service
-              port:
-                number: 8080
+        paths:
+          - path: /vue
+            pathType: Prefix
+            backend:
+              service:
+                name: vue3-site-service
+                port:
+                  number: 8080
