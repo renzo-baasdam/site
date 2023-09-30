@@ -1,10 +1,10 @@
 version: "3.9"
 name: "site"
 services:
-  ui:
-    container_name: ui
+  ui-vue:
+    container_name: ui-vue
     image: vue3-ui-image
-    build: services/ui
+    build: services/ui-vue
     ports:
       - "8080:8080"
   ui-svelte:
