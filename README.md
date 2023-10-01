@@ -2,8 +2,7 @@
 
 Site to test stuff out. Things done so far:
 
-- Basic Vue 3 site
-- Basic Svelte site
-- Azure pipeline to build and deploy to Azure App Service
+- Template Vue 3 site
+- Template Svelte site, with a terminal page
 - Docker container
 - Github actions pipeline to deploy to GKE
