@@ -2,11 +2,11 @@
   import { onMount } from 'svelte';
   import { CustomTerminal } from './terminal';
   import 'xterm/css/xterm.css';
-  let terminal: any; //creates a var to bind the dom element
+  let terminalBind: any; //creates a var to bind the dom element
 
   onMount(async () => {
-    const term = await CustomTerminal.init();
-    term.start(terminal);
+    const terminal = await CustomTerminal.init();
+    terminal.start(terminalBind);
   });
 </script>
 
@@ -16,6 +16,5 @@
 </svelte:head>
 
 <div class="text-column">
-  <link rel="stylesheet" href="xterm/css/xterm.css" />
-  <div id="terminal" bind:this={terminal} />
+  <div id="terminal" bind:this={terminalBind} />
 </div>
