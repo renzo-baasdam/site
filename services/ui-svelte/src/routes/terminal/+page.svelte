@@ -1,13 +1,22 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, beforeUpdate, afterUpdate } from 'svelte';
   import { CustomTerminal } from './terminal';
   import 'xterm/css/xterm.css';
   let terminalBind: any; //creates a var to bind the dom element
 
+  beforeUpdate(() => {
+    console.log('Component before update stage!');
+  })
+
   onMount(async () => {
+    console.log('Component mounting stage!');
     const terminal = await CustomTerminal.init();
     terminal.start(terminalBind);
   });
+
+  afterUpdate(() => {
+    console.log('Component after update stage!');
+  })
 </script>
 
 <svelte:head>
